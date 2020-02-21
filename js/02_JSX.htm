@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)file:///Users/qikaigao/Developer/React/test/props.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>02_JSX</title>
+<script>"use strict";
+
+function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return !!right[Symbol.hasInstance](left); } else { return left instanceof right; } }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+// 需求：自定义用来显示一个人员信息的组件，效果如页面，说明
+// 如果性别没有指定，默认为男
+// 如果年龄没有指定，默认为18
+// 1. 定义组件
+// function Person(props){
+//     return (
+//         <ul>
+//             <li>姓名：{props.name}</li>
+//             <li>性别：{props.age}</li>
+//             <li>年龄：{props.sex}</li>
+//         </ul>
+//     )
+// }
+var Person =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Person, _React$Component);
+
+  function Person() {
+    _classCallCheck(this, Person);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Person).apply(this, arguments));
+  }
+
+  _createClass(Person, [{
+    key: "render",
+    value: function render() {
+      console.log(this);
+      return React.createElement("ul", null, React.createElement("li", null, "\u59D3\u540D: ", this.props.name), React.createElement("li", null, "\u6027\u522B: ", this.props.sex), React.createElement("li", null, "\u5E74\u9F84: ", this.props.age));
+    }
+  }]);
+
+  return Person;
+}(React.Component); // 指定属性默认值
+
+
+Person.defaultProps = {
+  sex: '男',
+  age: 18
+}; // 指定属性值的类型和必要性
+
+Person.propTypes = {
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number
+}; // 2. 渲染组件标签
+
+var p1 = {
+  name: 'Tom',
+  age: 18,
+  sex: '女'
+}; //  ...的作用
+// 1. 打包
+//  function fn(...as){} fn(1,2,3) 打包成数组
+// 2. 解包
+// const arr1 = [1,2,3] const arr2 = [6,...arr1,9] 解包成数组
+// ReactDOM.render(<Person name={p1.name} age={p1.age} sex={p1.sex}/>,document.getElementById('example1'))
+
+ReactDOM.render(React.createElement(Person, p1), document.getElementById('example1'));
+var p2 = {
+  name: 'Jack',
+  age: 99
+};
+ReactDOM.render(React.createElement(Person, {
+  name: p2.name,
+  age: p2.age
+}), document.getElementById('example2'));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIklubGluZSBCYWJlbCBzY3JpcHQiXSwibmFtZXMiOlsiUGVyc29uIiwiY29uc29sZSIsImxvZyIsInByb3BzIiwibmFtZSIsInNleCIsImFnZSIsIlJlYWN0IiwiQ29tcG9uZW50IiwiZGVmYXVsdFByb3BzIiwicHJvcFR5cGVzIiwiUHJvcFR5cGVzIiwic3RyaW5nIiwiaXNSZXF1aXJlZCIsIm51bWJlciIsInAxIiwiUmVhY3RET00iLCJyZW5kZXIiLCJkb2N1bWVudCIsImdldEVsZW1lbnRCeUlkIiwicDIiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFFUTtBQUNBO0FBQ0E7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtJQUVNQSxNOzs7Ozs7Ozs7Ozs7OzZCQUNNO0FBQ0pDLE1BQUFBLE9BQU8sQ0FBQ0MsR0FBUixDQUFZLElBQVo7QUFDQSxhQUNJLGdDQUNJLGtEQUFTLEtBQUtDLEtBQUwsQ0FBV0MsSUFBcEIsQ0FESixFQUVJLGtEQUFTLEtBQUtELEtBQUwsQ0FBV0UsR0FBcEIsQ0FGSixFQUdJLGtEQUFTLEtBQUtGLEtBQUwsQ0FBV0csR0FBcEIsQ0FISixDQURKO0FBT0g7Ozs7RUFWZ0JDLEtBQUssQ0FBQ0MsUyxHQWdCM0I7OztBQUNBUixNQUFNLENBQUNTLFlBQVAsR0FBc0I7QUFDbEJKLEVBQUFBLEdBQUcsRUFBQyxHQURjO0FBRWxCQyxFQUFBQSxHQUFHLEVBQUM7QUFGYyxDQUF0QixDLENBS0E7O0FBQ0FOLE1BQU0sQ0FBQ1UsU0FBUCxHQUFtQjtBQUNmTixFQUFBQSxJQUFJLEVBQUVPLFNBQVMsQ0FBQ0MsTUFBVixDQUFpQkMsVUFEUjtBQUVmUCxFQUFBQSxHQUFHLEVBQUVLLFNBQVMsQ0FBQ0c7QUFGQSxDQUFuQixDLENBS0E7O0FBQ0EsSUFBTUMsRUFBRSxHQUFHO0FBQ1BYLEVBQUFBLElBQUksRUFBQyxLQURFO0FBRVBFLEVBQUFBLEdBQUcsRUFBQyxFQUZHO0FBR1BELEVBQUFBLEdBQUcsRUFBQztBQUhHLENBQVgsQyxDQUtBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFFQTs7QUFDQVcsUUFBUSxDQUFDQyxNQUFULENBQWdCLG9CQUFDLE1BQUQsRUFBWUYsRUFBWixDQUFoQixFQUFrQ0csUUFBUSxDQUFDQyxjQUFULENBQXdCLFVBQXhCLENBQWxDO0FBRUEsSUFBTUMsRUFBRSxHQUFHO0FBQ1BoQixFQUFBQSxJQUFJLEVBQUMsTUFERTtBQUVQRSxFQUFBQSxHQUFHLEVBQUM7QUFGRyxDQUFYO0FBS0FVLFFBQVEsQ0FBQ0MsTUFBVCxDQUFnQixvQkFBQyxNQUFEO0FBQVEsRUFBQSxJQUFJLEVBQUVHLEVBQUUsQ0FBQ2hCLElBQWpCO0FBQXVCLEVBQUEsR0FBRyxFQUFFZ0IsRUFBRSxDQUFDZDtBQUEvQixFQUFoQixFQUFzRFksUUFBUSxDQUFDQyxjQUFULENBQXdCLFVBQXhCLENBQXREIiwic291cmNlc0NvbnRlbnQiOlsiXG5cbiAgICAgICAgLy8g6ZyA5rGC77ya6Ieq5a6a5LmJ55So5p2l5pi+56S65LiA5Liq5Lq65ZGY5L+h5oGv55qE57uE5Lu277yM5pWI5p6c5aaC6aG16Z2i77yM6K+05piOXG4gICAgICAgIC8vIOWmguaenOaAp+WIq+ayoeacieaMh+Wumu+8jOm7mOiupOS4uueUt1xuICAgICAgICAvLyDlpoLmnpzlubTpvoTmsqHmnInmjIflrprvvIzpu5jorqTkuLoxOFxuICAgICAgICBcbiAgICAgICAgLy8gMS4g5a6a5LmJ57uE5Lu2XG4gICAgICAgIC8vIGZ1bmN0aW9uIFBlcnNvbihwcm9wcyl7XG4gICAgICAgIC8vICAgICByZXR1cm4gKFxuICAgICAgICAvLyAgICAgICAgIDx1bD5cbiAgICAgICAgLy8gICAgICAgICAgICAgPGxpPuWnk+WQje+8mntwcm9wcy5uYW1lfTwvbGk+XG4gICAgICAgIC8vICAgICAgICAgICAgIDxsaT7mgKfliKvvvJp7cHJvcHMuYWdlfTwvbGk+XG4gICAgICAgIC8vICAgICAgICAgICAgIDxsaT7lubTpvoTvvJp7cHJvcHMuc2V4fTwvbGk+XG4gICAgICAgIC8vICAgICAgICAgPC91bD5cbiAgICAgICAgLy8gICAgIClcbiAgICAgICAgLy8gfVxuXG4gICAgICAgIGNsYXNzIFBlcnNvbiBleHRlbmRzIFJlYWN0LkNvbXBvbmVudHtcbiAgICAgICAgICAgIHJlbmRlcigpe1xuICAgICAgICAgICAgICAgIGNvbnNvbGUubG9nKHRoaXMpXG4gICAgICAgICAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgICAgICAgICAgPHVsPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGxpPuWnk+WQjToge3RoaXMucHJvcHMubmFtZX08L2xpPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGxpPuaAp+WIqzoge3RoaXMucHJvcHMuc2V4fTwvbGk+XG4gICAgICAgICAgICAgICAgICAgICAgICA8bGk+5bm06b6EOiB7dGhpcy5wcm9wcy5hZ2V9PC9saT5cbiAgICAgICAgICAgICAgICAgICAgPC91bD5cbiAgICAgICAgICAgICAgICApXG4gICAgICAgICAgICB9XG4gICAgICAgIH1cblxuXG5cblxuICAgICAgICAvLyDmjIflrprlsZ7mgKfpu5jorqTlgLxcbiAgICAgICAgUGVyc29uLmRlZmF1bHRQcm9wcyA9IHtcbiAgICAgICAgICAgIHNleDon55S3JyxcbiAgICAgICAgICAgIGFnZToxOFxuICAgICAgICB9XG5cbiAgICAgICAgLy8g5oyH5a6a5bGe5oCn5YC855qE57G75Z6L5ZKM5b+F6KaB5oCnXG4gICAgICAgIFBlcnNvbi5wcm9wVHlwZXMgPSB7XG4gICAgICAgICAgICBuYW1lOiBQcm9wVHlwZXMuc3RyaW5nLmlzUmVxdWlyZWQsXG4gICAgICAgICAgICBhZ2U6IFByb3BUeXBlcy5udW1iZXJcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIDIuIOa4suafk+e7hOS7tuagh+etvlxuICAgICAgICBjb25zdCBwMSA9IHtcbiAgICAgICAgICAgIG5hbWU6J1RvbScsXG4gICAgICAgICAgICBhZ2U6MTgsXG4gICAgICAgICAgICBzZXg6J+WlsydcbiAgICAgICAgfVxuICAgICAgICAvLyAgLi4u55qE5L2c55SoXG4gICAgICAgIC8vIDEuIOaJk+WMhVxuICAgICAgICAvLyAgZnVuY3Rpb24gZm4oLi4uYXMpe30gZm4oMSwyLDMpIOaJk+WMheaIkOaVsOe7hFxuICAgICAgICAvLyAyLiDop6PljIVcbiAgICAgICAgLy8gY29uc3QgYXJyMSA9IFsxLDIsM10gY29uc3QgYXJyMiA9IFs2LC4uLmFycjEsOV0g6Kej5YyF5oiQ5pWw57uEXG5cbiAgICAgICAgLy8gUmVhY3RET00ucmVuZGVyKDxQZXJzb24gbmFtZT17cDEubmFtZX0gYWdlPXtwMS5hZ2V9IHNleD17cDEuc2V4fS8+LGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdleGFtcGxlMScpKVxuICAgICAgICBSZWFjdERPTS5yZW5kZXIoPFBlcnNvbiB7Li4ucDF9Lz4sZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2V4YW1wbGUxJykpXG5cbiAgICAgICAgY29uc3QgcDIgPSB7XG4gICAgICAgICAgICBuYW1lOidKYWNrJyxcbiAgICAgICAgICAgIGFnZTo5OVxuICAgICAgICB9XG5cbiAgICAgICAgUmVhY3RET00ucmVuZGVyKDxQZXJzb24gbmFtZT17cDIubmFtZX0gYWdlPXtwMi5hZ2V9Lz4sZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2V4YW1wbGUyJykpXG5cbiAgICAiXX0=</script></head>
+
+<body>
+    <div id="example1"><ul><li>姓名: Tom</li><li>性别: 女</li><li>年龄: 18</li></ul></div>
+    <div id="example2"><ul><li>姓名: Jack</li><li>性别: 男</li><li>年龄: 99</li></ul></div>
+
+    <script type="text/javascript" src="./02_JSX_files/react.development.js"></script>
+    <script type="text/javascript" src="./02_JSX_files/react-dom.development.js"></script>
+    <!-- <script type="text/javascript" src="./js/prop-types.js"></script> -->
+    <script src="./02_JSX_files/prop-types.js"></script>
+    <script src="./02_JSX_files/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        // 需求：自定义用来显示一个人员信息的组件，效果如页面，说明
+        // 如果性别没有指定，默认为男
+        // 如果年龄没有指定，默认为18
+        
+        // 1. 定义组件
+        // function Person(props){
+        //     return (
+        //         <ul>
+        //             <li>姓名：{props.name}</li>
+        //             <li>性别：{props.age}</li>
+        //             <li>年龄：{props.sex}</li>
+        //         </ul>
+        //     )
+        // }
+
+        class Person extends React.Component{
+            render(){
+                console.log(this)
+                return (
+                    <ul>
+                        <li>姓名: {this.props.name}</li>
+                        <li>性别: {this.props.sex}</li>
+                        <li>年龄: {this.props.age}</li>
+                    </ul>
+                )
+            }
+        }
+
+
+
+
+        // 指定属性默认值
+        Person.defaultProps = {
+            sex:'男',
+            age:18
+        }
+
+        // 指定属性值的类型和必要性
+        Person.propTypes = {
+            name: PropTypes.string.isRequired,
+            age: PropTypes.number
+        }
+
+        // 2. 渲染组件标签
+        const p1 = {
+            name:'Tom',
+            age:18,
+            sex:'女'
+        }
+        //  ...的作用
+        // 1. 打包
+        //  function fn(...as){} fn(1,2,3) 打包成数组
+        // 2. 解包
+        // const arr1 = [1,2,3] const arr2 = [6,...arr1,9] 解包成数组
+
+        // ReactDOM.render(<Person name={p1.name} age={p1.age} sex={p1.sex}/>,document.getElementById('example1'))
+        ReactDOM.render(<Person {...p1}/>,document.getElementById('example1'))
+
+        const p2 = {
+            name:'Jack',
+            age:99
+        }
+
+        ReactDOM.render(<Person name={p2.name} age={p2.age}/>,document.getElementById('example2'))
+
+    </script>
+
+
+</body></html>
