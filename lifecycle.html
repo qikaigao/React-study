@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>02_JSX</title>
+</head>
+
+<body>
+    <div id="example">example</div>
+
+
+    <script type="text/javascript" src="./js/react.development.js"></script>
+    <script type="text/javascript" src="./js/react-dom.development.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+    /*
+    需求：自定义组件
+        1. 让指定的问题本做显示/隐藏的动画
+        2. 切换时间为2s
+        3. 点击按钮从界面中移除组件页面
+    */
+    
+    class Life extends React.Component{
+        // 构造器
+        constructor(props){
+            super(props)
+            console.log('constructor')
+            // 初始化状态
+            this.state = {
+                opacity:1
+            }
+
+            // this.componentDidMount = this.componentDidMount.bind(this)
+            this.distroyComponent = this.distroyComponent.bind(this)
+        }
+
+        componentWillMount(){
+            console.log('component-Will-Mount')
+        }
+
+
+        // 
+        componentDidMount(){
+            console.log('component-Did-Mount')
+            // 启动循环定时器
+            this.intervalID = setInterval(() => {
+                console.log('定时器执行')
+                let {opacity} = this.state
+                opacity-=0.1
+                if(opacity<=0){
+                    opacity=1
+                }
+                this.setState({opacity})
+            }, 200);
+        }
+
+        componentWillUpdate(){
+            console.log('component-Will-Update')
+        }
+
+        componentDidUpdate(){
+            console.log('component-Did-Update')
+        }
+
+        componentWillUnmount(){
+            console.log('component-Will-Unmount')
+            // 清理定时器
+            clearInterval(this.intervalID)
+        }
+
+        distroyComponent(){
+            ReactDOM.unmountComponentAtNode(document.getElementById('example'))
+        }
+
+        // 渲染调用
+        render(){
+            console.log('render调用')
+            const {msg} = this.props
+            const {opacity} = this.state
+            return (
+                <div>
+                    <h2 style={{'opacity':opacity}}>{msg}</h2>
+                    <button onClick={this.distroyComponent}>不活了</button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Life msg='react太难了' />, document.getElementById('example'))
+   
+
+    </script>
+</body>
+
+</html>
